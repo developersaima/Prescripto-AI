@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 function readStorage<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
@@ -15,12 +15,6 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() =>
     readStorage(key, initialValue)
   );
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setStoredValue(readStorage(key, initialValue));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
 
   const setValue = useCallback(
     (value: T | ((prev: T) => T)) => {
