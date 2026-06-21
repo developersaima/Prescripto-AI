@@ -36,12 +36,12 @@ const categoryColors: Record<string, string> = {
 
 export default function PatientPage() {
   const [records, setRecords] = useLocalStorage<MedicalRecord[]>("prescripto_records", []);
-  const [auditLogs, setAuditLogs] = useLocalStorage<AuditLog[]>("prescripto_audit", []);
+  const [_auditLogs, setAuditLogs] = ...
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [latestRecord, setLatestRecord] = useState<MedicalRecord | null>(null);
-  const [generatedPatientId, setGeneratedPatientId] = useState("");
+const [_generatedPatientId, setGeneratedPatientId] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
