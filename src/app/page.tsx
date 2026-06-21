@@ -74,12 +74,10 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 text-center">
         <div
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-8 border"
-          style={{
-            backgroundColor: "var(--color-brand-subtle)",
-            color: "var(--color-brand)",
-            borderColor: "var(--color-brand)",
-            borderOpacity: 0.2,
-          }}
+         style={{
+  color: "var(--color-brand)",
+  borderColor: "var(--color-brand)",
+}}
         >
           <FaBrain className="w-3 h-3" />
           Powered by Gemini 2.5 Flash
