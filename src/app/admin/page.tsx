@@ -116,7 +116,7 @@ const MOCK_DOCTORS: DoctorProfile[] = [
 
 export default function AdminPage() {
   const [records, setRecords, clearRecords] = useLocalStorage<MedicalRecord[]>("prescripto_records", []);
-const [auditLogs, _setAuditLogs, clearAuditLogs] = useLocalStorage<AuditLog[]>(...);
+const [auditLogs, _setAuditLogs, clearAuditLogs] = useLocalStorage<AuditLog[]>("prescripto_audit", []);
   const [patients, setPatients] = useLocalStorage<PatientProfile[]>("prescripto_patients", []);
   const [doctors, setDoctors] = useLocalStorage<DoctorProfile[]>("prescripto_doctors", []);
   const [isModalOpen, setIsModalOpen] = useState(false);
