@@ -5,8 +5,6 @@ import {
   Button,
   Card,
   Chip,
-  Table,
-  Modal,
   Input,
   Badge,
 } from "@heroui/react";
@@ -22,9 +20,7 @@ import {
   FaChartBar,
   FaCalendar,
   FaXmark,
-  FaStethoscope,
   FaLungs,
-  FaFlask,
 } from "react-icons/fa6";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import type { MedicalRecord } from "@/types";
@@ -127,7 +123,7 @@ export default function DoctorPage() {
           <div className="text-center py-20 rounded-2xl border border-gray-200 bg-white">
             <FaUserDoctor className="w-12 h-12 mx-auto mb-4 text-gray-400" />
             <p className="font-medium text-gray-900">
-              No records found for "{queriedId}"
+               No records found for &quot;{queriedId}&quot;
             </p>
             <p className="text-sm mt-1 text-gray-600">
               Ask the patient to upload their prescriptions first.
