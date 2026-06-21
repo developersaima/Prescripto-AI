@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@heroui/react";
 import {
   FaUserInjured,
@@ -23,8 +23,12 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const [mounted] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -40,7 +44,6 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Brand */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center"
@@ -57,7 +60,6 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map(({ href, label, icon: Icon }) => {
               const isActive = pathname.startsWith(href);
@@ -82,11 +84,12 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Theme toggle + mobile menu */}
           <div className="flex items-center gap-2">
-            {mounted && (
+            {mounted ? (
               <Button
                 isIconOnly
+                size="sm"
+                variant="ghost"
                 onPress={toggleTheme}
                 aria-label="Toggle theme"
                 className="rounded-lg"
@@ -103,9 +106,10 @@ export function Navbar() {
                   />
                 )}
               </Button>
+            ) : (
+              <div className="w-8 h-8" />
             )}
 
-            {/* Mobile hamburger */}
             <button
               className="md:hidden p-2 rounded-lg"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -130,7 +134,6 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden pb-3 pt-2 flex flex-col gap-1">
             {navLinks.map(({ href, label, icon: Icon }) => {
