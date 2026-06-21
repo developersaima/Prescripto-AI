@@ -1,8 +1,6 @@
 "use client";
-
 import { useState, useEffect, useCallback } from "react";
 
-// Read from localStorage safely
 function readStorage<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
   try {
@@ -18,10 +16,10 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     readStorage(key, initialValue)
   );
 
-  // Sync on mount after hydration
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStoredValue(readStorage(key, initialValue));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
   const setValue = useCallback(
