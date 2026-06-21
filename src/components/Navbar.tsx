@@ -87,8 +87,6 @@ export function Navbar() {
             {mounted && (
               <Button
                 isIconOnly
-                size="sm"
-                variant="light"
                 onPress={toggleTheme}
                 aria-label="Toggle theme"
                 className="rounded-lg"
