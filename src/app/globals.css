@@ -17,7 +17,6 @@
   --color-vitamin: #8b5cf6;
   --color-calcium: #06b6d4;
   --color-gastric: #10b981;
-
   --font-sans: "Inter", system-ui, sans-serif;
   --radius-card: 0.75rem;
 }
@@ -47,4 +46,54 @@ body {
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Dark mode utility overrides */
+.dark .bg-white {
+  background-color: var(--color-surface) !important;
+}
+.dark .bg-gray-50 {
+  background-color: var(--color-surface-secondary) !important;
+}
+.dark .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+.dark .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+.dark .text-gray-600 {
+  color: var(--color-text-secondary) !important;
+}
+.dark .text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+.dark .text-gray-400 {
+  color: var(--color-text-muted) !important;
+}
+.dark .border-gray-200 {
+  border-color: var(--color-border) !important;
+}
+.dark .border-gray-300 {
+  border-color: var(--color-border) !important;
+}
+.dark .border-gray-100 {
+  border-color: var(--color-border) !important;
+}
+.dark .divide-gray-200 > * + * {
+  border-color: var(--color-border) !important;
+}
+.dark .hover\:bg-gray-50:hover {
+  background-color: var(--color-surface-secondary) !important;
+}
+.dark .hover\:bg-gray-100:hover {
+  background-color: #1e293b !important;
+}
+.dark .bg-gray-200 {
+  background-color: #334155 !important;
+}
+.dark .text-gray-700 {
+  color: var(--color-text-secondary) !important;
+}
+.dark .text-gray-800 {
+  color: var(--color-text-primary) !important;
 }
