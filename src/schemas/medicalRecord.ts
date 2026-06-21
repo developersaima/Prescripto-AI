@@ -1,34 +1,30 @@
 import { z } from "zod";
 
-const medicineCategorySchema = z.enum([
-  "Antibiotic",
-  "Vitamin",
-  "Calcium",
-  "Gastric",
-  "Others",
-]);
+const medicineCategorySchema = z
+  .enum(["Antibiotic", "Vitamin", "Calcium", "Gastric", "Others"])
+  .catch("Others");
 
 const medicineSchema = z.object({
-  name: z.string().min(1),
-  dosage: z.string().min(1),
-  duration: z.string().min(1),
+  name: z.string().default(""),
+  dosage: z.string().default(""),
+  duration: z.string().default(""),
   category: medicineCategorySchema,
 });
 
 const testResultSchema = z.object({
-  testName: z.string().min(1),
-  value: z.string().min(1),
+  testName: z.string().default(""),
+  value: z.string().default(""),
 });
 
 export const medicalRecordSchema = z.object({
-  recordId: z.string().min(1),
-  patientId: z.string().min(1),
-  date: z.string().min(1),
-  doctorName: z.string().min(1),
-  patientCase: z.string().min(1),
-  respiratoryRate: z.string(),
-  medicines: z.array(medicineSchema),
-  testResults: z.array(testResultSchema),
+  recordId: z.string().default(() => crypto.randomUUID()),
+  patientId: z.string().default("P-UNKNOWN"),
+  date: z.string().default(""),
+  doctorName: z.string().default(""),
+  patientCase: z.string().default(""),
+  respiratoryRate: z.string().default(""),
+  medicines: z.array(medicineSchema).default([]),
+  testResults: z.array(testResultSchema).default([]),
 });
 
 export const auditLogSchema = z.object({
